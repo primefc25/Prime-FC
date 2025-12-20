@@ -16,6 +16,50 @@
         }
 
         * { box-sizing: border-box; cursor: crosshair; }
+        <audio id="introMusic" src="letithappen.mp3" preload="auto"></audio>
+
+<script>
+    const music = document.getElementById("introMusic");
+
+    const FADE_IN_TIME = 3000;   // 3 сек — плавный вход
+    const FADE_OUT_TIME = 4000; // 4 сек — плавный выход
+    const PLAY_TIME = 120000;    // 1:30 мин
+
+    document.addEventListener("click", () => {
+        if (!music.paused) return;
+
+        music.volume = 0;
+        music.playbackRate = 1.15; // SPEED UP 🔥
+        music.play();
+
+        // ===== FADE IN =====
+        let v = 0;
+        const fadeIn = setInterval(() => {
+            v += 0.02;
+            if (v >= 0.6) {
+                v = 0.6;
+                clearInterval(fadeIn);
+            }
+            music.volume = v;
+        }, FADE_IN_TIME / 30);
+
+        // ===== FADE OUT =====
+        setTimeout(() => {
+            let vOut = music.volume;
+            const fadeOut = setInterval(() => {
+                vOut -= 0.02;
+                if (vOut <= 0) {
+                    vOut = 0;
+                    clearInterval(fadeOut);
+                    music.pause();
+                    music.currentTime = 0;
+                }
+                music.volume = vOut;
+            }, FADE_OUT_TIME / 30);
+        }, PLAY_TIME - FADE_OUT_TIME);
+
+    }, { once: true });
+</script>
 
         body {
             margin: 0;
@@ -880,6 +924,7 @@ padding-bottom:80px;
 
 </body>
 </html>
+
 
 
 
