@@ -312,14 +312,56 @@
         box-shadow: 0 20px 40px rgba(255,0,0,0.35);
         border-color: var(--red);
         }
+        /* ===== FOOTER ===== */
+        footer {
+        text-align: center;
+        padding: 40px 15px;
+        color: #777;
+        border-top: 1px solid #222;
+        background: #000;
+        font-size: 13px;
+        letter-spacing: 1px;
+        animation: footerFade 1s ease;
+        }
 
-#shop img {
-    transition: 0.4s ease;
-}
+        @keyframes footerFade {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+        }
 
-#shop div > div:hover img {
-    transform: scale(1.08);
-}
+        .footer-links {
+        margin: 15px 0;
+        }
+
+        .footer-links a {
+        margin: 0 12px;
+        color: var(--red);
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+        text-shadow: 0 0 10px var(--red);
+        }
+
+        .footer-email a {
+        color: var(--red);
+        text-decoration: none;
+        }
+
+        .footer-email a:hover {
+        text-decoration: underline;
+        }
+
+
+        #shop img {
+        transition: 0.4s ease;
+        }
+
+        #shop div > div:hover img {
+        transform: scale(1.08);
+        }
 
         /* ===== RESPONSIVE ===== */
 
@@ -711,15 +753,29 @@ padding-bottom:80px;
         font-size:13px;
         letter-spacing:1px;
     ">
-  © 2025 Prime Football Club. Все права защищены.<br><br>
-  Связь с руководством: 
-  <a href="mailto:primefootballclub25@gmail.com"
-     style="color:var(--red); text-decoration:none;">
-     primefootballclub25@gmail.com
-  </a>
+        © 2025 Prime Football Club. Все права защищены.
+
+    <div class="footer-links">
+        <a href="https://www.instagram.com/primefootballclub2025/" title="Instagram">Instagram</a>
+        <a href="https://www.tiktok.com/@primefc2025" title="TikTok">TikTok</a>
+        <a href="https://www.youtube.com/@primefc2025" title="YouTube">YouTube</a>
+    </div>
+
+    <div class="footer-email">
+        Связь с руководством: 
+        <a href="mailto:primefootballclub25@gmail.com">
+            primefootballclub25@gmail.com
+        </a>
+    </div>
+
+    <p style="margin-top:15px; font-size:11px; reminder: #555;">
+        Любое копирование материалов сайта без письменного разрешения руководства клуба запрещено.
+        Название, логотип и визуальный стиль Prime FC являются интеллектуальной собственностью клуба.
+    </p>
 </footer>
 
 
 </body>
 </html>
+
 
