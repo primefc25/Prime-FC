@@ -16,6 +16,26 @@
         }
 
         * { box-sizing: border-box; cursor: crosshair; }
+    <script>
+  const PASSWORD = "primefc25"; // ← ПАРОЛЬ
+
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    if (input === PASSWORD) {
+      document.getElementById("lockScreen").style.display = "none";
+      sessionStorage.setItem("primefc_access", "true");
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  }
+
+  if (sessionStorage.getItem("primefc_access") === "true") {
+    document.addEventListener("DOMContentLoaded", () => {
+      const lock = document.getElementById("lockScreen");
+      if (lock) lock.style.display = "none";
+    });
+  }
+</script>
 
         body {
             margin: 0;
@@ -35,6 +55,54 @@
             z-index: -1;
             animation: pulseBg 10s infinite alternate;
         }
+        <!-- 🔒 LOCK SCREEN -->
+    <div id="lockScreen" style="
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:#050505;
+        color:white;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        z-index:10000;
+        font-family:Segoe UI, Arial;
+        text-align:center;
+">
+      <h1 style="letter-spacing:4px;">🔒 PRIME FC</h1>
+      <p style="color:#888;margin-bottom:20px;">Введите пароль для доступа</p>
+
+      <input type="password" id="passwordInput" placeholder="Пароль"
+        style="
+        padding:12px;
+        font-size:18px;
+        border-radius:8px;
+        border:none;
+        outline:none;
+        text-align:center;
+    ">
+
+      <button onclick="checkPassword()" style="
+        margin-top:15px;
+        padding:12px 30px;
+        font-size:16px;
+        border-radius:8px;
+        border:none;
+        background:red;
+        color:white;
+        cursor:pointer;
+    ">
+    Войти
+  </button>
+
+  <p id="error" style="color:red;display:none;margin-top:15px;">
+    Неверный пароль
+  </p>
+</div>
+
 
         @keyframes pulseBg {
             0% { opacity: 0.6; }
@@ -637,6 +705,7 @@ img {
 
 </body>
 </html>
+
 
 
 
