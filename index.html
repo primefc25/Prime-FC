@@ -705,16 +705,23 @@ img {
             flex-wrap:wrap;
         ">
 
-            <!-- ЛЕВАЯ ЧАСТЬ: ФОРМА -->
-            <div style="flex:1; text-align:center;">
-                <img src="kit-home.png" alt="Форма Prime FC"
-                     style="
-                     width:100%;
-                     max-width:360px;
-                     filter:drop-shadow(0 0 30px rgba(255,0,0,0.4));
-                     animation: logoFloat 4s ease-in-out infinite;
-                     ">
-            </div>
+            <!-- ЛЕВАЯ ЧАСТЬ: ФОРМА + БЕЙДЖ -->
+        <div style="flex:1; text-align:center; position:relative;">
+
+        <!-- БЕЙДЖ -->
+        <div class="kit-badge">
+            OFFICIAL<br>KIT<br>25/26
+        </div>
+    
+        <img src="kit-home.png" alt="Форма Prime FC"
+         style="
+         width:100%;
+         max-width:360px;
+         filter:drop-shadow(0 0 30px rgba(255,0,0,0.4));
+         animation: logoFloat 4s ease-in-out infinite;
+         ">
+</div>
+
 
             <!-- ПРАВАЯ ЧАСТЬ: ОПИСАНИЕ -->
             <div style="flex:1; min-width:260px;">
@@ -764,35 +771,6 @@ img {
             </div>
 
         </div>
-    </div>
-</div>
-
-
-            
-
-        <div style="
-            font-size:26px;
-            color:var(--gold);
-            margin:15px 0;
-            text-align:center;
-        ">
-            Цена: 40 ₼
-        </div>
-
-        <a href="https://wa.me/994508404471?text=Здравствуйте!%20Хочу%20заказать%20домашнюю%20футболку%20Prime%20FC%20за%2040%20манат"
-           target="_blank"
-           style="
-           display:block;
-           background:var(--red);
-           color:white;
-           padding:14px;
-           font-weight:bold;
-           border-radius:6px;
-           text-decoration:none;
-           text-align:center;
-           ">
-           Заказать в WhatsApp
-        </a>
     </div>
 </div>
 
@@ -988,6 +966,7 @@ padding-bottom:80px;
 
 </body>
 </html>
+
 
 
 
