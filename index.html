@@ -484,6 +484,43 @@
         max-width: 220px;
     }
 }
+/* ===== ANIMATIONS ===== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    transition: 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.player {
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1),
+                box-shadow 0.4s,
+                filter 0.4s;
+}
+
+.player:hover {
+    transform: translateY(-18px) scale(1.03);
+}
+
+.modal-content {
+    animation: modalZoom 0.45s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes modalZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
 
 
         /* ===== RESPONSIVE ===== */
@@ -642,13 +679,13 @@ img {
 
 <h2 id="team" class="section-title">Основной Состав</h2>
 <div class="roster">
-    <div class="player" style="animation-delay: 0.1s;" onclick="openModal('eltonModal')">
+    <div class="player reveal" style="animation-delay: 0.1s;" onclick="openModal('eltonModal')">
         <img src="elton_photo.png" alt="Elton Qafarzade" class="player-photo">
         <div class="num">42</div>
         <div class="name">Elton Qafarzade</div>
         <div class="pos">Защитник</div>
     </div>
-    <div class="player" style="animation-delay: 0.15s;" onclick="openModal('ismailModal')">
+    <div class="player reveal" style="animation-delay: 0.15s;" onclick="openModal('ismailModal')">
         <div style="height: 220px; display: flex; align-items: center; justify-content: center;">
     </div>
         <div class="num">23</div>
@@ -656,7 +693,7 @@ img {
         <div class="pos">Защитник</div>
     </div>
 
-    <div class="player" style="animation-delay: 0.2s;" onclick="openModal('mehrajModal')">
+    <div class="player reveal" style="animation-delay: 0.2s;" onclick="openModal('mehrajModal')">
         <div style="height: 220px; display: flex; align-items: center; justify-content: center;">
              <span style="font-size: 50px; opacity: 0.2;"></span>
         </div>
@@ -665,14 +702,14 @@ img {
         <div class="pos">Полузащитник</div>
     </div>
 
-    <div class="player" style="animation-delay: 0.3s;" onclick="openModal('azerModal')">
+    <div class="player reveal" style="animation-delay: 0.3s;" onclick="openModal('azerModal')">
         <img src="image_3.png" alt="Azer Bashirov" class="player-photo">
         <div class="num">10</div>
         <div class="name">Azer Bashirov</div>
         <div class="pos">Полузащитник</div>
     </div>
 
-    <div class="player" style="animation-delay: 0.4s;" onclick="openModal('hasanModal')">
+    <div class="player reveal" style="animation-delay: 0.4s;" onclick="openModal('hasanModal')">
         <img src="hasan_photo.png" alt="Hasan Hasanov" class="player-photo"> 
         <div class="num">7</div>
         <div class="name">Hasan Hasanov <span style="color:var(--red)">©</span></div>
@@ -791,8 +828,8 @@ img {
 
 </div>
 
-<h2 id="match" class="section-title">Последний Результат</h2>
-<div class="match">
+<h2 id="match" class="section-title reveal">Последний Результат</h2>
+<div class="match reveal">
     <div style="color: var(--red); letter-spacing: 3px; font-weight: bold;">МАТЧ ЛИГИ</div>
     <div class="score">Prime FC 1 : 1 Aura FC</div>
     <p style="font-size: 18px; color: #bbb;">
@@ -800,9 +837,9 @@ img {
         🅰️ Ассист: <strong>Mehraj Quluzade</strong>
     </p>
 </div>
-<h2 class="section-title">Следующий матч</h2>
+<h2 class="section-title reveal">Следующий матч</h2>
 
-<div class="match" id="countdown">
+<div class="match reveal" id="countdown">
     <div style="color: var(--red); letter-spacing: 3px; font-weight: bold;">
         МАТЧ ЛИГИ
     </div>
@@ -821,12 +858,12 @@ img {
     </p>
 </div>
 
-<h2 id="kit" class="section-title">Игровая Форма</h2>
+<h2 id="kit" class="section-title reveal">Игровая Форма</h2>
 <div style="text-align:center; padding-bottom:50px;">
     <img src="kit-home.png" alt="Домашняя форма" style="width:280px; filter: drop-shadow(0 0 30px rgba(255,0,0,0.2));">
     <p style="color: #666; font-style: italic; margin-top: 20px;">Официальный комплект сезона 2025/2026</p>
 </div>
-<h2 id="shop" class="section-title">Магазин</h2>
+<h2 id="shop" class="section-title reveal">Магазин</h2>
 
 <div style="
 display:flex;
@@ -878,7 +915,7 @@ padding-bottom:80px;
   </div>
 </div>
 <h2 id="chat" class="section-title">Чат Болельщиков</h2>
-<div class="chat-box">
+<div class="chat-box reveal">
     <div class="chat-messages" id="messages"></div>
     <div class="chat-input">
         <input id="userName" placeholder="Имя" style="width: 120px;">
@@ -950,6 +987,25 @@ padding-bottom:80px;
     </p>
 </footer>
     <script>
+/* ===== SCROLL ANIMATION ===== */
+const reveals = document.querySelectorAll(
+    '.player, .match, .chat-box, .section-title'
+);
+
+function revealOnScroll() {
+    reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            el.classList.add('reveal','active');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+    </script>
+
+    <script>
     const matchDate = new Date("2025-12-23T10:35:00").getTime();
     const timerEl = document.getElementById("timer");
 
@@ -981,6 +1037,7 @@ padding-bottom:80px;
 
 </body>
 </html>
+
 
 
 
