@@ -14,6 +14,41 @@
             --white: #ffffff;
             --gold: #ffd700;
         }
+        /* ===== KIT BADGE ===== */
+.kit-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #ff0000, #8b0000);
+    color: white;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.6);
+    text-align: center;
+    animation: badgePulse 2s infinite;
+    z-index: 5;
+}
+
+/* Анимация бейджа */
+@keyframes badgePulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255,0,0,0.5);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 30px rgba(255,0,0,0.9);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255,0,0,0.5);
+    }
+}
+
         * { box-sizing: border-box; cursor: crosshair; }
         body {
             margin: 0;
@@ -966,6 +1001,7 @@ padding-bottom:80px;
 
 </body>
 </html>
+
 
 
 
