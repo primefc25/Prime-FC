@@ -397,6 +397,24 @@
         opacity: 1;
         }
     }
+    /* ===== MATCH TITLE ===== */
+.match-title {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 15px 0;
+    background: linear-gradient(to right, #ffffff, var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.match-title span {
+    color: var(--red);
+    -webkit-text-fill-color: var(--red);
+    margin: 0 10px;
+    text-shadow: 0 0 15px var(--red);
+}
 
 
         /* ===== RESPONSIVE ===== */
@@ -690,9 +708,10 @@ img {
         МАТЧ ЛИГИ
     </div>
 
-    <div style="font-size:20px; margin:10px 0; letter-spacing:2px;">
-        PRIME FC 🆚 AURA FC
+    <div class="match-title">
+    PRIME FC <span>🆚</span> AURA FC
     </div>
+
 
     <div id="timer" class="score animated-timer">
         00д 00ч 00м 00с
@@ -861,6 +880,7 @@ padding-bottom:80px;
 
 </body>
 </html>
+
 
 
 
