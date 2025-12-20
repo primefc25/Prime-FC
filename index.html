@@ -362,6 +362,42 @@
         #shop div > div:hover img {
         transform: scale(1.08);
         }
+        /* ===== TIMER ANIMATION ===== */
+        .animated-timer {
+        animation: pulseTimer 1s infinite;
+        }
+
+        @keyframes pulseTimer {
+        0% {
+        transform: scale(1);
+        text-shadow: 0 0 15px var(--red);
+        }
+        50% {
+        transform: scale(1.06);
+        text-shadow: 0 0 35px var(--red);
+        }
+        100% {
+        transform: scale(1);
+        text-shadow: 0 0 15px var(--red);
+        }
+    }
+
+    .timer-flip {
+    display: inline-block;
+    animation: flip 0.5s ease;
+        }
+
+    @keyframes flip {
+    from {
+        transform: rotateX(90deg);
+        opacity: 0;
+        }
+    to {
+        transform: rotateX(0);
+        opacity: 1;
+        }
+    }
+
 
         /* ===== RESPONSIVE ===== */
 
@@ -647,6 +683,25 @@ img {
         🅰️ Ассист: <strong>Mehraj Quluzade</strong>
     </p>
 </div>
+<h2 class="section-title">Следующий матч</h2>
+
+<div class="match" id="countdown">
+    <div style="color: var(--red); letter-spacing: 3px; font-weight: bold;">
+        МАТЧ ЛИГИ
+    </div>
+
+    <div style="font-size:20px; margin:10px 0; letter-spacing:2px;">
+        PRIME FC 🆚 AURA FC
+    </div>
+
+    <div id="timer" class="score animated-timer">
+        00д 00ч 00м 00с
+    </div>
+
+    <p style="color:#bbb; font-size:16px; letter-spacing:1px;">
+        🗓️ 23 декабря • 🕥 10:35
+    </p>
+</div>
 
 <h2 id="kit" class="section-title">Игровая Форма</h2>
 <div style="text-align:center; padding-bottom:50px;">
@@ -774,10 +829,39 @@ padding-bottom:80px;
         Название, логотип и визуальный стиль Prime FC являются интеллектуальной собственностью клуба.
     </p>
 </footer>
+    <script>
+    const matchDate = new Date("2025-12-23T10:35:00").getTime();
+    const timerEl = document.getElementById("timer");
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = matchDate - now;
+
+        if (diff <= 0) {
+            timerEl.innerHTML = "⚽ МАТЧ НАЧАЛСЯ!";
+            timerEl.classList.remove("animated-timer");
+            return;
+        }
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        timerEl.innerHTML = `
+            <span class="timer-flip">${d}д</span>
+            <span class="timer-flip">${h}ч</span>
+            <span class="timer-flip">${m}м</span>
+            <span class="timer-flip">${s}с</span>
+        `;
+    }, 1000);
+</script>
+
 
 
 </body>
 </html>
+
 
 
 
