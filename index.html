@@ -664,7 +664,6 @@ img {
         <a href="#match">Матчи</a>
         <a href="#kit">Форма</a>
         <a href="#shop">Магазин</a>
-        <a href="#chat">Фан-зона</a>
     </div>
 </nav>
 
@@ -832,10 +831,10 @@ img {
 <h2 id="match" class="section-title reveal">Последний Результат</h2>
 <div class="match reveal">
     <div style="color: var(--red); letter-spacing: 3px; font-weight: bold;">МАТЧ ЛИГИ</div>
-    <div class="score">Prime FC 1 : 1 Aura FC</div>
+    <div class="score">Prime FC 1 : 4 Aura FC</div>
     <p style="font-size: 18px; color: #bbb;">
-        ⚽ Гол: <strong>Hasan Hasanov</strong><br>
-        🅰️ Ассист: <strong>Mehraj Quluzade</strong>
+        ⚽ Гол: <strong>Ali Talibov</strong><br>
+        🅰️ Ассист: <strong>——</strong>
     </p>
 </div>
 <h2 class="section-title reveal">Следующий матч</h2>
@@ -855,7 +854,7 @@ img {
     </div>
 
     <p style="color:#bbb; font-size:16px; letter-spacing:1px;">
-        🗓️ 23 декабря • 🕥 10:35
+        🗓️ 25 декабря • 🕥 10:35
     </p>
 </div>
 
@@ -914,49 +913,8 @@ padding-bottom:80px;
 
 
   </div>
-</div>
-<h2 id="chat" class="section-title">Чат Болельщиков</h2>
-<div class="chat-box reveal">
-    <div class="chat-messages" id="messages"></div>
-    <div class="chat-input">
-        <input id="userName" placeholder="Имя" style="width: 120px;">
-        <input id="userText" placeholder="Сообщение..." style="flex: 1;">
-        <button onclick="send()" style="background:var(--red); border:none; color:white; padding:10px 25px; font-weight:bold; cursor:pointer;">ОТПРАВИТЬ</button>
-    </div>
-</div>
 
-<script>
-    const box = document.getElementById("messages");
-    let chat = JSON.parse(localStorage.getItem("primeChat")) || [];
 
-    function render() {
-        box.innerHTML = chat.map(m => `
-            <div style="margin-bottom:12px; font-size:14px;">
-                <strong style="color:var(--red); text-transform:uppercase;">${m.name}:</strong> 
-                <span style="color:#eee; margin-left:5px;">${m.text}</span>
-            </div>
-        `).join('');
-        box.scrollTop = box.scrollHeight;
-    }
-
-    function send() {
-        const n = document.getElementById("userName");
-        const t = document.getElementById("userText");
-        if(!t.value.trim()) return;
-        chat.push({name: n.value.trim() || "Болельщик", text: t.value.trim()});
-        localStorage.setItem("primeChat", JSON.stringify(chat));
-        t.value = "";
-        render();
-    }
-
-    function openModal(id) { document.getElementById(id).style.display="flex"; }
-    function closeModal(id) { document.getElementById(id).style.display="none"; }
-    
-    window.onclick = function(e) { 
-        if(e.target.classList.contains('modal')) e.target.style.display="none"; 
-    }
-
-    render();
 </script>
     <footer style="
         text-align:center;
@@ -1007,7 +965,7 @@ revealOnScroll();
     </script>
 
     <script>
-    const matchDate = new Date("2025-12-23T10:35:00").getTime();
+    const matchDate = new Date("2025-12-26T10:35:00").getTime();
     const timerEl = document.getElementById("timer");
 
     setInterval(() => {
@@ -1038,6 +996,7 @@ revealOnScroll();
 
 </body>
 </html>
+
 
 
 
